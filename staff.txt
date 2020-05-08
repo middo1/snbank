@@ -1,7 +1,7 @@
 {
 	"Middo" :{
 "Username" : "Middo", 
-"Password" : "just", 
+"Password" : "justtryiT", 
 "Email" : "hamidadeshina1@gmail.com", 
 "Full name" :"Balogun Hamid"}, 
   "Shenah" :{
