@@ -21,7 +21,7 @@ def getpass(usrn, pw):
             return None
             
             
-def addcont(acctmail, acctname, startbal, accttype):
+def addcont(acctname,acctmail, startbal, accttype):
     with open("customer.txt" , "r") as file:
         try :
             customers = json.load(file)
@@ -34,11 +34,21 @@ def addcont(acctmail, acctname, startbal, accttype):
         x = random.randint(0,9)
         acctno += str(x)    
         if len(acctno) == 10:
-            customer["Account number"] = acctno                  
-    customer["Account Name"] = acctname
-    customer["Account Email"] = acctmail 
+            customer["Account number"] = acctno     
+    if len(acctname) > 5:            
+        customer["Account Name"] = acctname.capitalize() 
+    else:
+        return "short name" 
+    if acctmail.__contains__("@") == True and acctmail.__contains__(".") == True and len(acctmail) < 8:
+        customer["Account Email"] = acctmail 
+    else:
+        return "wrong email" 
     customer["Starting Balance"] = startbal 
-    customer["Account Type"] = accttype
+    if accttype == "current" or accttype == "savings" :
+        customer["Account Type"] = accttype
+    else:
+        return "wrong account type" 
+    
     customers[acctno] = customer
     with open("customer.txt", "w") as file:
         json.dump(customers, file, indent=2)
@@ -79,9 +89,31 @@ while True:
                     if scond == 1:
                         aname = input("Enter customer's full name : ")
                         amail = input("Enter customer's Email : ")
-                        sbal = input("Enter customer's starting balance : ")
-                        atype = input("Enter customer's Account type: ")
-                        res = addcont(amail, aname, sbal, atype) 
+                        while True:
+                            try:
+                                sbal = float(input("Enter customer's starting balance : "))
+                                break 
+                            except:
+                                print("please  enter customer's starting balance (for example 1000.00) ") 
+                                continue
+                                                                                     
+                           
+                        atype = input("Enter customer's Account Type which be savings or current : ")
+                        res = addcont( aname, amail, sbal, atype) 
+                        while res == "short name":
+                            print("The name provided is too short") 
+                            aname = input("Please enter the customer's Full name : ") 
+                            res = addcont( aname,amail, sbal, atype) 
+                        while res == "wrong email":
+                            print("The Email provided is invalid") 
+                            amail = input("Please enter the customer's valid Email : ") 
+                            res = addcont( aname,amail, sbal, atype) 
+                        while res == "wrong account type" :
+                            print("invalid Account Type, please try again") 
+                            atype = input("Enter customer's Account Type which must be current or savings : ") 
+                            res = addcont( aname,amail, sbal, atype)
+
+                        sessions(name + " added a new account number : " + res + " at" ) 
                         print("The new account number is", res) 
                         continue
                     elif scond == 2:
