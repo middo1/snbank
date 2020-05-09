@@ -39,7 +39,7 @@ def addcont(acctname,acctmail, startbal, accttype):
         customer["Account Name"] = acctname.capitalize() 
     else:
         return "short name" 
-    if acctmail.__contains__("@") == True and acctmail.__contains__(".") == True and len(acctmail) < 8:
+    if acctmail.__contains__("@") == True and acctmail.__contains__(".") == True and len(acctmail) > 8:
         customer["Account Email"] = acctmail 
     else:
         return "wrong email" 
