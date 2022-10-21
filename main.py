@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import json
 import random
 import time
@@ -7,22 +9,14 @@ import os
 def getpass(usrn, pw):
     with open("staff.txt", 'r') as file:
         res = json.load(file)
-        if usrn == "Middo":
-            if pw == res["Middo"]["Password"]:
+        if usrn in res:
+            if pw == res[usrn]["Password"]:
                 return True
             else:
                 return False
-        elif usrn == "Shenah":
-            if pw == res["Shenah"]["Password"]:
-                return True
-            else:
-                return False
-        else:
-            return None
-            
-            
-def addcont(acctname,acctmail, startbal, accttype):
-    with open("customer.txt" , "r") as file:
+
+def addcont(acctname, acctmail, startbal, accttype):
+    with open("customer.txt", "r") as file:
         try :
             customers = json.load(file)
         except:
@@ -33,8 +27,9 @@ def addcont(acctname,acctmail, startbal, accttype):
     while len(acctno) < 10:
         x = random.randint(0,9)
         acctno += str(x)    
-        if len(acctno) == 10:
-            customer["Account number"] = acctno     
+    if len(acctno) == 10:
+        customer["Account number"] = acctno 
+
     if len(acctname) > 5:            
         customer["Account Name"] = acctname.capitalize() 
     else:
@@ -157,13 +152,4 @@ while True:
     elif fcond != str():
         print("Wrong option number try again") 
         continue
-    
-    
-    
-    
-    
-    
-    
-    
-            
 
