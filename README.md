@@ -1,10 +1,9 @@
-# snbank 2.0
-This is a bank console app strictly for staffs with a bit more functionality and modularity
+# snbank
+This is a bank console app strictly for staffs
 
-# Features of snbank 2.0
+# Features of snbank
 
 --> Easy Account registration
 
 --> Easy access to customers details
 
---> Things would just make more sense
