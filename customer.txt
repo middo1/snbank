@@ -1,1 +1,9 @@
-
+{
+  "8493499364": {
+    "Account number": "8493499364",
+    "Account Name": "Last ogun",
+    "Account Email": "lastogun@geee.co.ng",
+    "Starting Balance": 33.0,
+    "Account Type": "savings"
+  }
+}

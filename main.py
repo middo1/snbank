@@ -15,6 +15,25 @@ def getpass(usrn, pw):
             else:
                 return False
 
+def checkmail(mail):
+    if mail.__contains__("@") and mail.__contains__("."):
+        name,symbol, provider = mail.partition("@")
+        if len(name) < 5:
+            return False
+        elif name.__contains__("."):
+            return False
+        elif provider.__contains__("@"):
+            return False
+        elif len(provider.partition(".")[0]) < 4:
+            return False
+        elif len(provider.partition(".")[2]) < 2:
+            return False
+        else:
+            return True
+    else:
+        return False
+
+
 def addcont(acctname, acctmail, startbal, accttype):
     with open("customer.txt", "r") as file:
         try :
@@ -34,7 +53,7 @@ def addcont(acctname, acctmail, startbal, accttype):
         customer["Account Name"] = acctname.capitalize() 
     else:
         return "short name" 
-    if acctmail.__contains__("@") == True and acctmail.__contains__(".") == True and len(acctmail) > 8:
+    if checkmail(acctmail):
         customer["Account Email"] = acctmail 
     else:
         return "wrong email" 
