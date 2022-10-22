@@ -57,7 +57,7 @@ def addcont(acctname, acctmail, startbal, accttype):
         customer["Account Email"] = acctmail 
     else:
         return "wrong email" 
-    customer["Starting Balance"] = startbal 
+    customer["Balance"] = startbal 
     if accttype == "current" or accttype == "savings" :
         customer["Account Type"] = accttype
     else:
@@ -69,7 +69,7 @@ def addcont(acctname, acctmail, startbal, accttype):
     return acctno
 
 def sessions(things):
-    FILE = ".session"
+    FILE = "../.session"
     with open(FILE, "a") as file:
         file.write("\n" +things+ " " +str(time.asctime())) 
     return FILE
@@ -141,7 +141,7 @@ while True:
                                         print("Account Email :", chk[acno]["Account Email"]) 
                                         print("Account Number:", chk[acno]["Account number"]) 
                                         print("Account Type :", chk[acno]["Account Type"]) 
-                                        print("Starting Balance :", chk[acno]["Starting Balance"]) 
+                                        print("Balance :", chk[acno]["Balance"]) 
                                         break
                                     else:
                                         acno = input("Please enter required account number of the required details or enter cancel to go back : ")

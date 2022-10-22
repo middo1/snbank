@@ -5,5 +5,12 @@
     "Account Email": "lastogun@geee.co.ng",
     "Starting Balance": 33.0,
     "Account Type": "savings"
+  },
+  "8004350038": {
+    "Account number": "8004350038",
+    "Account Name": "Last ogun",
+    "Account Email": "lastoguns@gmai.com",
+    "Balance": 2.0,
+    "Account Type": "current"
   }
 }
